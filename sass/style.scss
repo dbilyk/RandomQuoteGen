@@ -15,6 +15,12 @@ $bgE : rgb(65, 198, 216);
   @media only screen and (max-width: 992px) { @content; }
 }
 
+@mixin bgAnim($duration){
+  -webkit-transition: background-color $duration linear;
+  -ms-transition: background-color $duration linear;
+  transition: background-color $duration linear;
+}
+
 body {
   height: 100vh;
   background-color: $c5;
@@ -22,7 +28,7 @@ body {
 
 #app{
   height: 50%;
-  margin-top:10%;
+  margin-top:5%;
 
 }
 .col-md-6, .col-12{
@@ -35,18 +41,24 @@ body {
 
 .bgA{
   background-color: $bgA;
+  @include bgAnim(1000ms);
 }
 .bgB{
   background-color: $bgB;
+  @include bgAnim(1000ms);
+
 }
 .bgC{
   background-color: $bgC;
+  @include bgAnim(1000ms);
 }
 .bgD{
   background-color: $bgD;
+  @include bgAnim(1000ms);
 }
 .bgE{
   background-color: $bgE;
+  @include bgAnim(1000ms);
 }
 
 #quote-div{
@@ -55,7 +67,7 @@ body {
   padding:none;
   overflow:hidden;
   .overlay{
-    background-color: $c3;
+    //background-color: $c3;
     border-radius:1em;
     height: 100%;
     margin: 2px 4px -2px -4px;

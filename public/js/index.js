@@ -1,6 +1,14 @@
 
 function QuoteMachine(){
+  this.currentQuote = "";
   this.quoteP = $("#quote-text").clone();
+  var currentColorInd = 0;
+  var colors = ["bgA","bgB","bgC","bgD","bgE"];
+  var swapColor = function(oldClass, newClass,targetString){
+    $(targetString).removeClass(oldClass).addClass(newClass);
+
+  }
+
   this.getQuote = function(){
     $.getJSON("https://talaikis.com/api/quotes/random/",(data)=>{
       var quote = data.quote;
@@ -15,6 +23,9 @@ function QuoteMachine(){
       $(newQuoteP).children("#author-target").html("- " + author);
       $("#quote-div, .overlay:first").css({height:$(oldQuoteP).outerHeight() + "px"});
       $("#quote-div, .overlay:first").animate({height:$(newQuoteP).outerHeight() + "px"},500);
+      swapColor(colors[currentColorInd],colors[(currentColorInd<colors.length-1)?currentColorInd+1:0],".overlay:first");
+      (currentColorInd<colors.length-1)?currentColorInd++:currentColorInd=0;
+      this.currentQuote = quote;
     })
   }
 }
