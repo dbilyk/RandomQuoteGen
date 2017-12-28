@@ -1,3 +1,126 @@
-body{
-  color: blue;
+$c1 : #3a3c42;
+$c2 :#496a85;
+$c3 :#ecca58;
+$c4 :#adadad;
+$c5 :#e2e5e9;
+$c6 : #57d4b9;
+
+$bgA : rgb(240, 229, 82);
+$bgB : rgb(255, 104, 104);
+$bgC : rgb(56, 209, 102);
+$bgD : rgb(151, 109, 142);
+$bgE : rgb(65, 198, 216);
+
+@mixin media-sm() {
+  @media only screen and (max-width: 992px) { @content; }
 }
+
+body {
+  height: 100vh;
+  background-color: $c5;
+}
+
+#app{
+  height: 50%;
+  margin-top:10%;
+
+}
+.col-md-6, .col-12{
+  padding:0;
+  
+}
+.row{
+  margin-top:1em;
+}
+
+.bgA{
+  background-color: $bgA;
+}
+.bgB{
+  background-color: $bgB;
+}
+.bgC{
+  background-color: $bgC;
+}
+.bgD{
+  background-color: $bgD;
+}
+.bgE{
+  background-color: $bgE;
+}
+
+#quote-div{
+  background-color: $c4;
+  border-radius: 1em;
+  padding:none;
+  overflow:hidden;
+  .overlay{
+    background-color: $c3;
+    border-radius:1em;
+    height: 100%;
+    margin: 2px 4px -2px -4px;
+  }
+}
+
+#quote-text {
+  font-family:"lobster", "cursive";
+  font-size: 4em; 
+  line-height: 1em;
+  padding:10% 10% 16% 10%;
+  text-shadow: 1px -1px $c2;
+
+  @include media-sm(){
+    font-size: 3em;
+  }
+  
+  .quote-char{
+    font-size: 10vw;
+    line-height:0.2em;
+    @include media-sm(){
+      font-size: 20vw;
+      
+    }
+  }
+  
+  .qc-left{
+    vertical-align: -0.4em;
+  }
+  .qc-right{
+    transform: scale(-1,-1);
+    float:right;
+    text-shadow: -1px 1px $c2;
+    margin-top: -0.2em;
+    
+  }
+}
+
+#author-target{
+  text-align: right;
+  font-size: 0.8em;
+  margin-bottom:1em;
+  font-family: "Give You Glory","cursive";
+}
+
+#new-quote, #twitter-post{
+  color: $c1;
+  background-color:$c6;
+  border-radius: 50%;
+  width:80px;
+  height:80px;
+  padding-top:10px;
+  margin-top: -1.2em;
+  font-size:3em;
+}
+
+#new-quote{
+  float:left;
+  margin-left:1em;
+
+}
+
+#twitter-post{
+  float: right;
+  margin-right: 1em;
+  
+}
+
