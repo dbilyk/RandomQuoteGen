@@ -1,6 +1,7 @@
 
 function QuoteMachine(){
   this.currentQuote = "";
+  this.currentAuthor = "";
   this.quoteP = $("#quote-text").clone();
   var currentColorInd = 0;
   var colors = ["bgA","bgB","bgC","bgD","bgE"];
@@ -26,7 +27,14 @@ function QuoteMachine(){
       swapColor(colors[currentColorInd],colors[(currentColorInd<colors.length-1)?currentColorInd+1:0],".overlay:first");
       (currentColorInd<colors.length-1)?currentColorInd++:currentColorInd=0;
       this.currentQuote = quote;
+      this.currentAuthor = author;
     })
+
+  }
+  this.postToTwitter = function(){
+    var baseTwtHref = "https://twitter.com/intent/tweet";
+    $("#twitter-post").attr('href', encodeURI(baseTwtHref + "?text="+this.currentQuote+" - "+this.currentAuthor));
+    console.log(encodeURI(baseTwtHref + "?text="+this.currentQuote+" - "+this.currentAuthor));
   }
 }
 
@@ -35,4 +43,9 @@ $(document).ready(function(){
   $("#new-quote").click((e)=>{
     quoteMachine.getQuote();
   }) 
+
+  $("#twitter-post").click((e)=>{
+    quoteMachine.postToTwitter();
+    
+  })  
 })
